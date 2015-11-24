@@ -1,5 +1,5 @@
-OpenHIM config package - for DATIM Node
-=======================================
+OpenHIM config package - for DATIM Global
+=========================================
 
 This repo allows you to create a debian package that will automatically
 configure the openhim-core server installed by the openhim-core debian package.
