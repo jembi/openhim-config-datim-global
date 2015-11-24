@@ -1,130 +1,31 @@
 {
-  "Users": [
-    {
-      "dailyReport": true,
-      "email": "test@jembi.org",
-      "expiry": null,
-      "firstname": "Test",
-      "locked": false,
-      "msisdn": "0000000000",
-      "passwordAlgorithm": "sha512",
-      "passwordHash": "test",
-      "passwordSalt": "test",
-      "settings": {
-        "visualizer": {
-          "components": [],
-          "endpoints": [],
-          "color": {
-            "inactive": "CCCCCC",
-            "active": "4cae4c",
-            "error": "d43f3a",
-            "text": "000000"
-          },
-          "size": {
-            "responsive": true,
-            "width": 1000,
-            "height": 400,
-            "padding": 20
-          },
-          "time": {
-            "updatePeriod": 200,
-            "maxSpeed": 5,
-            "maxTimeout": 5000
-          }
-        }
-      },
-      "surname": "Test",
-      "token": null,
-      "weeklyReport": true,
-      "groups": [
-        "jsonstub",
-        "polling"
-      ]
-    },
-    {
-      "dailyReport": false,
-      "email": "Test2@jembi.org",
-      "expiry": null,
-      "firstname": "Test2",
-      "locked": false,
-      "msisdn": null,
-      "passwordAlgorithm": "sha512",
-      "passwordHash": "test",
-      "passwordSalt": "test",
-      "settings": {
-        "visualizer": {
-          "components": [],
-          "endpoints": [],
-          "color": {
-            "inactive": "CCCCCC",
-            "active": "4cae4c",
-            "error": "d43f3a",
-            "text": "000000"
-          },
-          "size": {
-            "responsive": true,
-            "width": 1000,
-            "height": 400,
-            "padding": 20
-          },
-          "time": {
-            "updatePeriod": 200,
-            "maxSpeed": 5,
-            "maxTimeout": 5000
-          }
-        }
-      },
-      "surname": "Test2",
-      "token": null,
-      "weeklyReport": true,
-      "groups": [
-        "ohie"
-      ]
-    }
-  ],
+  "Users": [],
   "Clients": [
     {
-      "clientID": "full-client-2",
-      "contactPerson": "Test",
-      "contactPersonEmail": "a@b.org",
-      "description": "blah b lah blah",
-      "name": "Full Client-2",
-      "organization": "Some Org",
-      "passwordAlgorithm": "sha512",
-      "passwordHash": "test",
-      "passwordSalt": "test",
-      "softwareName": "Some Soft",
+      "certFingerprint": "6A:75:50:F3:61:DC:B2:39:C8:BE:93:14:F0:EB:76:E1:DC:E6:8D:7E",
+      "clientDomain": "iol-ohie-dev.datim.org",
+      "clientID": "datim-node",
+      "name": "DATIM Node",
       "roles": [
-        "test"
-      ]
-    },
-    {
-      "certFingerprint": "B2:70:EB:14:BD:BB:94:BB:F1:4C:FA:DF:EC:E3:F3:20:62:8B:D6:59",
-      "clientDomain": "test",
-      "clientID": "test-2",
-      "name": "test-2",
-      "passwordAlgorithm": "sha512",
-      "passwordHash": "test",
-      "passwordSalt": "test",
-      "roles": [
-        "test"
+        "submitter",
+        "metadata-query"
       ]
     }
   ],
   "Channels": [
     {
-      "description": "OpenHIM Bench - Basic GET Test",
+      "description": "Forward imported aggregate data to global HMIS",
       "matchContentJson": null,
       "matchContentRegex": null,
       "matchContentValue": null,
       "matchContentXpath": null,
-      "name": "OpenHIM Bench - Basic GET Test",
+      "name": "ADX/DXF import",
       "pollingSchedule": null,
       "requestBody": true,
       "responseBody": true,
       "tcpHost": null,
       "tcpPort": null,
-      "urlPattern": "^/bench/basic/get$",
+      "urlPattern": "^/import$",
       "rewriteUrlsConfig": [],
       "addAutoRewriteRules": true,
       "rewriteUrls": false,
@@ -132,41 +33,43 @@
       "alerts": [],
       "txRerunAcl": [],
       "txViewFullAcl": [],
-      "txViewAcl": [
-        "ohie"
-      ],
+      "txViewAcl": [],
       "properties": [],
       "matchContentTypes": [],
       "routes": [
         {
-          "host": "localhost",
-          "name": "Basic GET",
-          "port": 6050,
+          "name": "DHIS Global",
+          "secured": true,
+          "host": "dev.datim.global.ohie.datim.org",
+          "port": 443,
+          "path": "/ohie/dataValueSets",
+          "pathTransform": "",
           "primary": true,
-          "secured": false,
+          "username": "",
+          "password": "",
           "type": "http"
         }
       ],
       "authType": "private",
       "whitelist": [],
       "allow": [
-        "bench"
+        "submitter"
       ],
       "type": "http"
     },
     {
-      "description": "OpenHIM Bench - Basic POST Test",
+      "description": "Forward CSD message to global infomanager",
       "matchContentJson": null,
       "matchContentRegex": null,
       "matchContentValue": null,
       "matchContentXpath": null,
-      "name": "OpenHIM Bench - Basic POST Test",
+      "name": "CSD",
       "pollingSchedule": null,
       "requestBody": true,
       "responseBody": true,
       "tcpHost": null,
       "tcpPort": null,
-      "urlPattern": "^/bench/basic/post$",
+      "urlPattern": "^/CSD.*$",
       "rewriteUrlsConfig": [],
       "addAutoRewriteRules": true,
       "rewriteUrls": false,
@@ -174,26 +77,27 @@
       "alerts": [],
       "txRerunAcl": [],
       "txViewFullAcl": [],
-      "txViewAcl": [
-        "ohie"
-      ],
+      "txViewAcl": [],
       "properties": [],
       "matchContentTypes": [],
       "routes": [
         {
-          "host": "localhost",
-          "name": "Basic POST",
-          "port": 6050,
+          "password": "",
+          "username": "",
           "primary": true,
+          "pathTransform": "",
+          "path": "",
+          "port": 8877,
+          "host": "localhost",
           "secured": false,
+          "name": "Global InfoMan",
           "type": "http"
         }
       ],
       "authType": "private",
       "whitelist": [],
       "allow": [
-        "bench",
-        "ohie"
+        "metadata-query"
       ],
       "type": "http"
     }
